@@ -1,8 +1,22 @@
 // TODO: add the necessary `Clone` implementations (and invocations)
 //  to get the code to compile.
 
+impl Clone for Ticket {
+    fn clone(&self) -> Self {
+        let newTitle = self.title.clone();
+        let newDescription = self.description.clone();
+        let newStatus = self.status.clone();
+
+        Ticket {
+            title: newTitle,
+            description: newDescription,
+            status: newStatus,
+        }
+    }
+}
+
 pub fn summary(ticket: Ticket) -> (Ticket, Summary) {
-    (ticket, ticket.summary())
+    (ticket.clone(), ticket.summary())
 }
 
 pub struct Ticket {
